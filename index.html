@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SMAN 9 Cirebon</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#f5f7fa;
+      color:#1f2937;
+      overflow-x:hidden;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      position:fixed;
+      top:0;
+      width:100%;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:rgba(255,255,255,0.85);
+      backdrop-filter:blur(12px);
+      z-index:1000;
+      border-bottom:1px solid rgba(0,0,0,0.05);
+    }
+
+    nav h1{
+      font-size:24px;
+      font-weight:700;
+      color:#111827;
+    }
+
+    nav ul{
+      display:flex;
+      list-style:none;
+      gap:30px;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:#374151;
+      font-weight:500;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:#2563eb;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding:120px 8%;
+      position:relative;
+      overflow:hidden;
+      color:white;
+      background:
+      linear-gradient(
+      rgba(15,23,42,0.78),
+      rgba(15,23,42,0.78)
+      ),
+      url('gambar/foto3.jpeg');
+      background-size:cover;
+      background-position:center;
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+      width:500px;
+      height:500px;
+      background:rgba(37,99,235,0.15);
+      border-radius:50%;
+      top:-150px;
+      right:-120px;
+      filter:blur(20px);
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      max-width:700px;
+    }
+
+    .hero h2{
+      font-size:65px;
+      line-height:1.1;
+      margin-bottom:25px;
+    }
+
+    .hero span{
+      color:#60a5fa;
+    }
+
+    .hero p{
+      color:#d1d5db;
+      line-height:1.9;
+      margin-bottom:35px;
+      font-size:17px;
+      max-width:600px;
+    }
+
+    .hero-btn{
+      display:inline-block;
+      padding:15px 32px;
+      background:#2563eb;
+      color:white;
+      text-decoration:none;
+      border-radius:14px;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .hero-btn:hover{
+      background:#1d4ed8;
+      transform:translateY(-4px);
+    }
+
+    /* SECTION */
+
+    section{
+      padding:90px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:42px;
+      margin-bottom:15px;
+      color:#111827;
+    }
+
+    .section-title p{
+      max-width:700px;
+      margin:auto;
+      line-height:1.8;
+      color:#6b7280;
+    }
+
+    /* PROFIL */
+
+    .profile-wrapper{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    .profile-image img{
+      width:100%;
+      border-radius:30px;
+      object-fit:cover;
+      height:500px;
+      box-shadow:0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .profile-content{
+      display:flex;
+      flex-direction:column;
+      gap:25px;
+    }
+
+    .profile-card{
+      background:white;
+      padding:30px;
+      border-radius:24px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.05);
+      transition:0.3s;
+    }
+
+    .profile-card:hover{
+      transform:translateY(-8px);
+    }
+
+    .profile-card h3{
+      color:#2563eb;
+      margin-bottom:12px;
+      font-size:22px;
+    }
+
+    .profile-card p{
+      color:#6b7280;
+      line-height:1.8;
+    }
+
+    /* EKSKUL */
+
+    .ekskul-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:25px;
+    }
+
+    .ekskul-card{
+      background:white;
+      padding:35px;
+      border-radius:24px;
+      transition:0.3s;
+      box-shadow:0 10px 30px rgba(0,0,0,0.05);
+      border:1px solid rgba(0,0,0,0.04);
+    }
+
+    .ekskul-card:hover{
+      background:#2563eb;
+      color:white;
+      transform:translateY(-10px);
+    }
+
+    .ekskul-card h3{
+      margin-bottom:12px;
+    }
+
+    .ekskul-card p{
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    /* KONTAK */
+
+    .contact-box{
+      background:white;
+      border-radius:30px;
+      padding:50px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:35px;
+      box-shadow:0 15px 40px rgba(0,0,0,0.06);
+    }
+
+    .contact-item h3{
+      color:#2563eb;
+      margin-bottom:14px;
+    }
+
+    .contact-item p{
+      color:#6b7280;
+      line-height:1.8;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#111827;
+      text-align:center;
+      color:white;
+      padding:35px;
+      margin-top:60px;
+    }
+
+    footer p{
+      color:#d1d5db;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:950px){
+
+      nav{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      nav ul{
+        gap:18px;
+      }
+
+      .hero h2{
+        font-size:45px;
+      }
+
+      .profile-wrapper{
+        grid-template-columns:1fr;
+      }
+
+      .profile-image img{
+        height:350px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <h1>SMAN 9 CIREBON</h1>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#profil">Profil</a></li>
+      <li><a href="#ekskul">Ekskul</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <!-- HOME -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <h2>
+        Sekolah Modern
+        Untuk Generasi
+        <span>Berprestasi</span>
+      </h2>
+
+      <p>
+        Selamat datang di website resmi SMAN 9 Cirebon.
+        Sekolah yang menghadirkan lingkungan belajar nyaman,
+        disiplin, inovatif, dan mendukung pengembangan
+        akademik maupun non akademik siswa.
+      </p>
+
+      <a href="#profil" class="hero-btn">
+        Jelajahi Sekolah
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- PROFIL -->
+
+  <section id="profil">
+
+    <div class="section-title">
+
+      <h2>Profil Sekolah</h2>
+
+      <p>
+        SMAN 9 Cirebon hadir sebagai sekolah menengah atas
+        yang mengutamakan kualitas pendidikan,
+        karakter siswa, dan pengembangan potensi generasi muda.
+      </p>
+
+    </div>
+
+    <div class="profile-wrapper">
+
+      <div class="profile-image">
+
+        <!-- GANTI FOTO DI BAWAH DENGAN FOTO ASLI SMAN 9 CIREBON -->
+
+        <img src="gambar/Profil9.jpg" alt="foto sekolah">
+
+      </div>
+
+      <div class="profile-content">
+
+        <div class="profile-card">
+          <h3>Visi</h3>
+
+          <p>
+            Menjadi sekolah unggulan yang menghasilkan
+            generasi cerdas, berprestasi,
+            disiplin, dan berkarakter.
+          </p>
+        </div>
+
+        <div class="profile-card">
+          <h3>Misi</h3>
+
+          <p>
+            Mengembangkan pembelajaran inovatif,
+            meningkatkan prestasi akademik dan non akademik,
+            serta membangun lingkungan sekolah yang positif.
+          </p>
+        </div>
+
+        <div class="profile-card">
+          <h3>Fasilitas</h3>
+
+          <p>
+            Memiliki ruang kelas nyaman, laboratorium,
+            perpustakaan, lapangan olahraga,
+            dan fasilitas penunjang pembelajaran lainnya.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- EKSKUL -->
+
+  <section id="ekskul">
+
+    <div class="section-title">
+
+      <h2>Ekstrakurikuler</h2>
+
+      <p>
+        Berbagai kegiatan ekstrakurikuler yang mendukung
+        minat dan bakat siswa di bidang akademik,
+        olahraga, maupun seni.
+      </p>
+
+    </div>
+
+    <div class="ekskul-grid">
+
+      <div class="ekskul-card">
+        <h3>Pramuka</h3>
+        <p>
+          Membentuk jiwa kepemimpinan,
+          disiplin, dan tanggung jawab.
+        </p>
+      </div>
+
+      <div class="ekskul-card">
+        <h3>Futsal</h3>
+        <p>
+          Mengembangkan kemampuan olahraga
+          dan sportivitas siswa.
+        </p>
+      </div>
+
+      <div class="ekskul-card">
+        <h3>Paskibra</h3>
+        <p>
+          Melatih kedisiplinan,
+          mental, dan kekompakan.
+        </p>
+      </div>
+
+      <div class="ekskul-card">
+        <h3>PMR</h3>
+        <p>
+          Menumbuhkan jiwa sosial
+          dan kepedulian terhadap sesama.
+        </p>
+      </div>
+
+      <div class="ekskul-card">
+        <h3>Basket</h3>
+        <p>
+          Mengembangkan kerja sama tim
+          dan kemampuan atletik.
+        </p>
+      </div>
+
+      <div class="ekskul-card">
+        <h3>Seni Musik</h3>
+        <p>
+          Wadah kreativitas dan bakat seni siswa.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- KONTAK -->
+
+  <section id="kontak">
+
+    <div class="section-title">
+
+      <h2>Kontak Sekolah</h2>
+
+      <p>
+        Hubungi kami untuk informasi lebih lanjut
+        mengenai SMAN 9 Cirebon.
+      </p>
+
+    </div>
+
+    <div class="contact-box">
+
+      <div class="contact-item">
+        <h3>Alamat</h3>
+
+        <p>
+          Kota Cirebon,
+          Jawa Barat,
+          Indonesia
+        </p>
+      </div>
+
+      <div class="contact-item">
+        <h3>Email</h3>
+
+        <p>
+          info@sman9cirebon.sch.id
+        </p>
+      </div>
+
+      <div class="contact-item">
+        <h3>Telepon</h3>
+
+        <p>
+          (0231) 123456
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+      © 2026 SMAN 9 Cirebon • Official School Website
+    </p>
+
+  </footer>
+
+</body>
+</html>
